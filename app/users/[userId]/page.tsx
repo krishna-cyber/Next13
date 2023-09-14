@@ -7,7 +7,7 @@ import { Suspense } from "react";
 
 type params = {
   params: {
-    userId: number | string;
+    userId: string;
   };
 };
 
