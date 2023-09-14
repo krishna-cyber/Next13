@@ -2,9 +2,11 @@
 
 import React from "react";
 
-type props = Promise<UserPost[]>;
+type props = {
+  promise: Promise<UserPost[]>;
+};
 
-const UserPosts = async (promise: props) => {
+const UserPosts = async ({ promise }: props) => {
   const posts = await promise;
 
   const content = posts.map((post) => {
