@@ -4,12 +4,26 @@ import getUser from "@/lib/getUser";
 import getUserPosts from "@/lib/getUserPost";
 import UserPosts from "./components/UserPosts";
 import { Suspense } from "react";
+import type { Metadata, ResolvingMetadata } from "next";
 
 type params = {
   params: {
     userId: string;
   };
 };
+
+//generating dynamic metadata
+export async function generateMetadata({
+  params: { userId },
+}: params): Promise<Metadata> {
+  const userData: Promise<User> = getUser(userId);
+  const user = await userData;
+
+  return {
+    title: user.name,
+    description: `This is the page of ${user.name}`,
+  };
+}
 
 const UserPage = async ({ params: { userId } }: params) => {
   const userData: Promise<User> = getUser(userId);
