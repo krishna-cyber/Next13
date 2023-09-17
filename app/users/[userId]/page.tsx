@@ -6,6 +6,7 @@ import UserPosts from "./components/UserPosts";
 import { Suspense } from "react";
 import type { Metadata, ResolvingMetadata } from "next";
 import getAllUsers from "@/lib/getAllUsers";
+import NotFound from "./not-found";
 
 type params = {
   params: {
@@ -31,6 +32,7 @@ const UserPage = async ({ params: { userId } }: params) => {
   const userPostData: Promise<UserPost[]> = getUserPosts(userId);
 
   const user = await userData;
+  if (!user.name) return NotFound();
   return (
     <>
       <h2>{user.name}</h2>
