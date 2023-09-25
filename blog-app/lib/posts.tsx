@@ -1,8 +1,8 @@
 /** @format */
-import BlogPost from "@/app/components/Posts";
 import fs from "fs";
-import matter from "gray-matter";
 import path from "path";
+import matter from "gray-matter";
+import { remark } from "remark";
 
 //getting post directory
 const postsDirectory = path.join(process.cwd(), "blogposts");
@@ -32,4 +32,17 @@ export function getSortedPosts() {
   });
   // Sort posts by date
   return allPostsData.sort((a, b) => (a.date < b.date ? 1 : -1));
+}
+
+//get post data
+
+export async function getPostData(id: string) {
+  const fullPath = path.join(postsDirectory, `${id}.md`);
+  const fileContents = fs.readFileSync(fullPath, "utf8");
+
+  // Use gray-matter to parse the post metadata section
+  const matterResult = matter(fileContents);
+
+  // Combine the data with the id
+  return matterResult;
 }

@@ -58,6 +58,9 @@ dependencies:
   react-markdown:
     specifier: ^8.0.7
     version: 8.0.7(@types/react@18.2.22)(react@18.2.0)
+  remark:
+    specifier: ^15.0.1
+    version: 15.0.1
   remark-gfm:
     specifier: ^4.0.0
     version: 4.0.0
@@ -1609,7 +1612,7 @@ packages:
   /@types/mdast@4.0.0:
     resolution: {integrity: sha512-YLeG8CujC9adtj/kuDzq1N4tCDYKoZ5l/bnjq8d74+t/3q/tHquJOJKUQXJrLCflOHpKjXgcI/a929gpmLOEng==}
     dependencies:
-      '@types/unist': 2.0.8
+      '@types/unist': 3.0.0
     dev: false
 
   /@types/ms@0.7.31:
@@ -4571,6 +4574,17 @@ packages:
       '@types/mdast': 4.0.0
       mdast-util-to-markdown: 2.1.0
       unified: 11.0.3
+    dev: false
+
+  /remark@15.0.1:
+    resolution: {integrity: sha512-Eht5w30ruCXgFmxVUSlNWQ9iiimq07URKeFS3hNc8cUWy1llX4KDWfyEDZRycMc+znsN9Ux5/tJ/BFdgdOwA3A==}
+    dependencies:
+      '@types/mdast': 4.0.0
+      remark-parse: 11.0.0
+      remark-stringify: 11.0.0
+      unified: 11.0.3
+    transitivePeerDependencies:
+      - supports-color
     dev: false
 
   /resolve-from@4.0.0:
