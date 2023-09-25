@@ -4,12 +4,12 @@ import React from "react";
 import ReactMarkdown from "react-markdown";
 import gfm from "remark-gfm"; // Optional: Enables GitHub Flavored Markdown
 
-const BlogPost = ({ content }) => {
+const Posts = ({ content }: any) => {
   return (
     <div className='blog-post'>
-      <ReactMarkdown remarkPlugins={[gfm]} children={content} />
+      <ReactMarkdown remarkPlugins={[gfm]}>{content}</ReactMarkdown>
     </div>
   );
 };
 
-export default BlogPost;
+export default Posts;

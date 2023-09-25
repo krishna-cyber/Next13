@@ -1,5 +1,5 @@
 /** @format */
-import BlogPost from "@/app/components/BlogPost";
+import BlogPost from "@/app/components/Posts";
 import fs from "fs";
 import matter from "gray-matter";
 import path from "path";
@@ -9,9 +9,6 @@ const postsDirectory = path.join(process.cwd(), "blogposts");
 
 export function getSortedPosts() {
   //getting all filenames in an array
-  const filenames = fs.readdirSync(postsDirectory);
-  //const allPostDatas
-
   const fileNames = fs.readdirSync(postsDirectory);
   const allPostsData = fileNames.map((fileName) => {
     // Remove ".md" from file name to get id
