@@ -1,14 +1,18 @@
 /** @format */
-
+import { getSortedPosts } from "@/lib/posts";
 import React from "react";
-import ReactMarkdown from "react-markdown";
-import gfm from "remark-gfm"; // Optional: Enables GitHub Flavored Markdown
+import Post from "./Post";
+import { Container } from "@chakra-ui/react";
 
-const Posts = ({ content }: any) => {
+const Posts = () => {
+  const posts = getSortedPosts();
   return (
-    <div className='blog-post'>
-      <ReactMarkdown remarkPlugins={[gfm]}>{content}</ReactMarkdown>
-    </div>
+    <>
+      <p className=' text-2xl font-bold mt-4 text-white'>Blog Posts:</p>
+      {posts.map((item) => {
+        return <Post post={item} key={item.id} />;
+      })}
+    </>
   );
 };
 

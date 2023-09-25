@@ -1,15 +1,15 @@
 /** @format */
 
 import { getSortedPosts } from "@/lib/posts";
-import PostLists from "./components/PostLists";
 import { Container } from "@chakra-ui/react";
+import Posts from "./components/Posts";
 
 export default function Home() {
   const posts = getSortedPosts();
   return (
     <main>
       <Container maxW={"container.xl"}>
-        <PostLists content={posts} />
+        <Posts />
       </Container>
     </main>
   );
