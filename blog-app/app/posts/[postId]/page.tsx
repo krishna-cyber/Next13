@@ -1,9 +1,11 @@
 /** @format */
+
 import { getPostData, getSortedPosts } from "@/lib/posts";
 import { notFound } from "next/navigation";
 import gfm from "remark-gfm";
 import ReactMarkdown from "react-markdown";
 import { Card, CardBody, Container } from "@chakra-ui/react";
+import { useState } from "react";
 
 export async function generateMetadata({
   params,
@@ -27,10 +29,14 @@ export async function generateMetadata({
 }
 const page = async ({ params }: { params: { postId: string } }) => {
   const { postId } = params;
-  const postContent = await getPostData(postId);
+
   const posts = getSortedPosts();
+  let postContent;
   if (!posts.find((post) => post.id == postId)) {
     return notFound();
+  } else {
+    const postContent1 = await getPostData(postId);
+    postContent = postContent1;
   }
 
   return (
